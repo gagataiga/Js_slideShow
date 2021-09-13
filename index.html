@@ -31,15 +31,36 @@
             imageCount++;
 
             if (imageCount > (myImages.length - 1)) {
-             imageCount = 0;
+                imageCount = 0;
             }
 
             let newline = document.createElement("img");
-                newline.src = `slides/${myImages[imageCount]}`;
-                newline.className = "fadeinimg";
-                container.appendChild(newline);
+            newline.src = `slides/${myImages[imageCount]}`;
+            newline.className = "fadeinimg";
+            container.appendChild(newline);
+
+            // to remove container children
+            if (container.children.length > 2) {
+                container.removeChild(container.children[0]);
+            }
         });
 
+        preBtn.addEventListener("click",function(){
+            imageCount--;
+            if(imageCount < 0){
+                imageCount = myImages.length - 1;
+            }
+
+            let newline = document.createElement("img");
+            newline.src = `slides/${myImages[imageCount]}`;
+            newline.className = "fadeinimg";
+            container.appendChild(newline);
+
+            if (container.children.length > 2) {
+                container.removeChild(container.children[0]);
+            }
+            
+        });
     </script>
 </body>
 
